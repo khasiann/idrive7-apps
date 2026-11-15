@@ -835,7 +835,7 @@ function start(ctx, src) {
     // does only that, then stops): a plug-in hybrid's Hybrid / Electric modes count as Comfort, hidden by default, so
     // without it a hybrid would only be found in Sport (2026-11-10 review)
     const stopReads = (probe) => {
-        [src.gearbox, src.knock, src.fuel].forEach((r) => { if (r) r.stop(); });
+        [src.gearbox, src.knock, src.fuel, src.intake].forEach((r) => { if (r) r.stop(); });
         if (src.electrical) { if (probe) src.electrical.start({}); else src.electrical.stop(); }
     };
     const stopTimer = () => { if (timer) clearInterval(timer); timer = null; stopReads(); };
