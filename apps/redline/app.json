@@ -195,6 +195,8 @@
     {"key": "hudShowG", "label": "G-force (sideways and braking / accelerating together)", "type": "bool", "default": false, "when": {"hud": ["on", "test"], "hudAll": [true]}, "group": "HUD: readouts"},
     {"key": "hudShowKnock", "label": "Knock retard (degrees, only while it retards)", "type": "bool", "default": false, "when": {"hud": ["on", "test"], "hudAll": [true]}, "group": "HUD: readouts"},
     {"key": "hudShowFuel", "label": "Fuel use (from the engine unit, experimental)", "type": "bool", "default": false, "when": {"hud": ["on", "test"], "hudAll": [true]}, "group": "HUD: readouts"},
+    {"key": "hudShowIat", "label": "Intake air temperature (from the engine unit, experimental)", "type": "bool", "default": false, "when": {"hud": ["on", "test"], "hudAll": [true]}, "group": "HUD: readouts"},
+    {"key": "hudShowEthanol", "label": "Ethanol content (flex-fuel sensor, experimental)", "type": "bool", "default": false, "when": {"hud": ["on", "test"], "hudAll": [true]}, "group": "HUD: readouts"},
     {"key": "hudShowOil", "label": "Oil", "type": "bool", "default": true, "when": {"hud": ["on", "test"], "hudAll": [true]}, "group": "HUD: readouts"},
     {"key": "hudShowWater", "label": "Water", "type": "bool", "default": true, "when": {"hud": ["on", "test"], "hudAll": [true]}, "group": "HUD: readouts"},
     {"key": "hudShowGearbox", "label": "Gearbox", "type": "bool", "default": true, "when": {"hud": ["on", "test"], "hudAll": [true]}, "group": "HUD: readouts"},
