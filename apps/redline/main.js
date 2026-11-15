@@ -1131,7 +1131,7 @@ mgu.run({
         hud = Hud.start(ctx, {
             // the next turn and lanes while a route runs (null: none here)
             nav: nav,
-            data: () => car.data(), shiftPoint, redline, maxRpm, gearbox, knock, fuel, electrical, tyres, downshift,
+            data: () => car.data(), shiftPoint, redline, maxRpm, gearbox, knock, intake, fuel, electrical, tyres, downshift,
             // the tach's peak marker (drops back after "Peak hold"), the last upshift's grade for 1.5 s,
             // boost once it has moved and is under 2 s old (none from the demo drive)
             peak: () => peakRpm,
