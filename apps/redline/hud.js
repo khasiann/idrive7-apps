@@ -1131,6 +1131,7 @@ function start(ctx, src) {
         if (src.knock) { const run = isNum(src.data().rpm) && src.data().rpm > 400; if ((oNow.knock || oNow.knockWarn) && run) src.knock.start(); else src.knock.stop(); }
         // and its fuel rate only while the fuel readout is on and the engine runs
         if (src.fuel) { const run = isNum(src.data().rpm) && src.data().rpm > 400; if (oNow.fuel && run) src.fuel.start(); else src.fuel.stop(); }
+        if (src.intake) { const run = isNum(src.data().rpm) && src.data().rpm > 400; if ((oNow.iat || oNow.ethanol) && run) src.intake.start(); else src.intake.stop(); }
         const f = frameData();
         // the same inputs draw the same frame: skip it (idle, a steady cruise, no rpm)
         const key = frameKey(f);
