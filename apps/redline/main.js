@@ -56,6 +56,7 @@ const HudDraw = require('./hud-draw');
 const GearboxTemp = require('./gearbox');
 const KnockWatch = require('./knock');
 const FuelWatch = require('./fuel');
+const IntakeWatch = require('./intake');
 const PowerLog = require('./powerlog');
 const Electrical = require('./electrical');
 const Tyres = require('./tyres');
@@ -120,6 +121,7 @@ mgu.run({
         const knock = new KnockWatch(ctx, () => gearbox.diag());
         // fuel use from the engine unit, the same link; polled only while the fuel readout is on and the engine runs
         const fuel = new FuelWatch(ctx, () => gearbox.diag(), { diesel: () => engine.profile() === 'diesel' });
+        const intake = new IntakeWatch(ctx, () => gearbox.diag());
         // 12 V and hybrid battery from the car (signals, and read-only UDS on the same link); hybrid ones only on a hybrid
         const electrical = new Electrical(ctx, () => gearbox.diag());
         // tyre pressures, targets and temperatures from the car's own signals (no requests to any unit)
@@ -1145,6 +1147,7 @@ mgu.run({
                 gLat: fresh(extra.gLat, 2000), gLong: fresh(extra.gLong, 2000),
                 outside: fresh(extra.outside, 600000),
                 knock: knock.value().retard,
+                iat: intake.value().iat, ethanol: intake.value().ethanol,
                 // the engine off (electric driving, auto start-stop) uses no fuel: 0, once the engine unit has given
                 // a rate this run, rather than the readout dropping out (2026-11-10 review)
                 fuelLph: G.isNum(car.data().rpm) && car.data().rpm <= 400 && fuel.worked() ? 0 : fuel.value().lph, kmh: car.data().speed,
