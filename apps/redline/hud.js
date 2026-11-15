@@ -387,7 +387,7 @@ function optsFrom(settings, drive) {
         hvBar: hybridOn(settings, 'hudShowHvBar'),
         // fuel use from the engine unit (fuel.js), off unless switched on; l/100 km, mpg (UK / US) or km/l
         fuel: settings.get('hudShowFuel') === true,
-        iat: ... ethanol: ...
+        iat: settings.get('hudShowIat') === true, ethanol: settings.get('hudShowEthanol') === true,
         fuelUnit: ['mpguk', 'mpgus', 'kml'].indexOf(settings.get('hudFuelUnit')) >= 0 ? settings.get('hudFuelUnit') : 'l100',
         torqueUnit: ['lbft', 'kgm'].indexOf(settings.get('hudTorqueUnit')) >= 0 ? settings.get('hudTorqueUnit') : 'nm',
         powerUnit: ['kw', 'ps'].indexOf(settings.get('hudPowerUnit')) >= 0 ? settings.get('hudPowerUnit') : 'hp',
@@ -507,6 +507,8 @@ function readoutsFor(d, gb, boost, sp, o, x) {
     if (o.knock && isNum(x.knock) && x.knock >= 0.75) items.push({ label: 'KNOCK', value: x.knock.toFixed(1) + '°', tone: x.knock >= 2.25 ? 'hot' : 'warm' });
     // fuel use (fuel.js): per 100 km / mpg / km per litre while moving, per hour under 5 km/h
     if (o.fuel) { const it = Fuel.fuelItem(x.fuelLph, x.kmh, o.fuelUnit); if (it) items.push(it); }
+    if (o.iat && isNum(x.iat)) items.push({ label: 'IAT', value: Math.round(o.fahrenheit ? x.iat * 9 / 5 + 32 : x.iat) + '°', tone: x.iat >= 65 ? 'hot' : x.iat >= 50 ? 'warm' : 'text' });
+    if (o.ethanol && isNum(x.ethanol)) items.push({ label: 'ETH', value: Math.round(x.ethanol) + '%', tone: 'text' });
     TEMPS.forEach((t) => {
         if (!o[t[1]]) return;
         const v = t[1] === 'gearbox' ? gb : d[t[1]];
