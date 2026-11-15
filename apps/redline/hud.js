@@ -387,6 +387,7 @@ function optsFrom(settings, drive) {
         hvBar: hybridOn(settings, 'hudShowHvBar'),
         // fuel use from the engine unit (fuel.js), off unless switched on; l/100 km, mpg (UK / US) or km/l
         fuel: settings.get('hudShowFuel') === true,
+        iat: ... ethanol: ...
         fuelUnit: ['mpguk', 'mpgus', 'kml'].indexOf(settings.get('hudFuelUnit')) >= 0 ? settings.get('hudFuelUnit') : 'l100',
         torqueUnit: ['lbft', 'kgm'].indexOf(settings.get('hudTorqueUnit')) >= 0 ? settings.get('hudTorqueUnit') : 'nm',
         powerUnit: ['kw', 'ps'].indexOf(settings.get('hudPowerUnit')) >= 0 ? settings.get('hudPowerUnit') : 'hp',
